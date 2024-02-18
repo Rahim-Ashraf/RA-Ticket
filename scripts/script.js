@@ -54,8 +54,8 @@ for (const seat of seats) {
             arr.push(seat)
 
         }
-        if(arr.length >= 4){
-            document.getElementById("coupon-button").removeAttribute("disabled") 
+        if (arr.length >= 4) {
+            document.getElementById("coupon-button").removeAttribute("disabled")
         }
         submitForTicket()
     })
@@ -65,6 +65,15 @@ for (const seat of seats) {
 // coupon functionalities
 
 function grandTotalForCoupon() {
+    function appendDiscount() {
+        const discountDiv = document.createElement("p");
+        const discountTittle = document.createElement("p");
+        discountTittle.innerText = "Discount";
+        discountDiv.innerText = totalPrice.innerText - grandTotalText.innerText;
+        document.getElementById("discount-amount").appendChild(discountTittle);
+        document.getElementById("discount-amount").appendChild(discountDiv);
+    }
+
     const grandTotalText = document.getElementById("grand-total");
     const totalPrice = document.getElementById("total-price");
     grandTotalText.innerText = parseInt(totalPrice.innerText);
@@ -72,20 +81,16 @@ function grandTotalForCoupon() {
     if (couponValue.value === "NEW15") {
         grandTotalText.innerText = parseInt(totalPrice.innerText) * .85;
         document.getElementById("coupon-filed").classList.add("hidden");
+        appendDiscount()
 
     } else if (couponValue.value === "Couple 20") {
         grandTotalText.innerText = parseInt(totalPrice.innerText) * .80;
         document.getElementById("coupon-filed").classList.add("hidden");
+        appendDiscount()
 
     } else {
         alert("please Type a valid coupon");
     }
-    const discountDiv = document.createElement("p");
-    const discountTittle = document.createElement("p");
-    discountTittle.innerText = "Discount";
-    discountDiv.innerText = totalPrice.innerText - grandTotalText.innerText;
-    document.getElementById("discount-amount").appendChild(discountTittle);
-    document.getElementById("discount-amount").appendChild(discountDiv);
 
 }
 document.getElementById("coupon-button").addEventListener("click", grandTotalForCoupon);
