@@ -16,6 +16,9 @@
         rel="stylesheet">
 
     <style>
+        html{
+            scroll-behavior: smooth;
+        }
         .raleway-font {
             font-family: "Raleway", sans-serif;
         }
@@ -64,7 +67,7 @@
                             integrated testing
                             features allow for a streamlined .
                         </p>
-                        <button class="text-black bg-[#1DD100] rounded px-4 py-2 font-bold">Buy Tickets</button>
+                        <button class="text-black bg-[#1DD100] rounded px-4 py-2 font-bold"><a href="#select-seat">Buy Tickets</a></button>
                     </div>
                 </div>
             </div>
@@ -140,7 +143,7 @@
         </section>
 
         <!-- RA paribahan seat plan section -->
-        <section class="border-t-2 border-[#1DD100] rounded-t-xl pb-16  pt-16 bg-[#F7F8F8]">
+        <section id="select-seat" class="border-t-2 border-[#1DD100] rounded-t-xl pb-16  pt-16 bg-[#F7F8F8]">
             <div class="max-w-screen-xl mx-auto">
                 <div class="text-center pb-8 space-y-4">
                     <h2 class="text-5xl font-semibold">RA Paribahan</h2>
@@ -349,13 +352,16 @@
                                     <p>Total Price</p>
                                     <p>BDT <span id="total-price">0</span></p>
                                 </div>
+                                <div id="discount-amount" class="flex justify-between font-semibold text-[#1DD100]">
+
+                                </div>
 
                                 <!-- coupon field -->
                                 <div id="coupon-filed" class="bg-white rounded-lg p-2 flex justify-between my-4">
                                     <input id="coupon-value" class="w-full px-4" type="text" name="" id=""
                                         placeholder="Have any copupon?">
                                     <button id="coupon-button"
-                                        class="text-white bg-[#1DD100] px-4 py-1 rounded">Apply</button>
+                                        class="btn text-white bg-[#1DD100] px-4 py-1 rounded" disabled>Apply</button>
                                 </div>
                                 <div class="font-bold flex justify-between">
                                     <p>Grand Total</p>

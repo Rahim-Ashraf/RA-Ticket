@@ -1,5 +1,5 @@
 
-// appendin seat details
+// appendIn seat details
 function apendSeatDetails(seat) {
     const newElement = document.createElement("div");
     newElement.classList.add("flex");
@@ -39,6 +39,9 @@ for (const seat of seats) {
     seat.addEventListener("click", function () {
         const totalSelectedSeats = document.getElementById("total-selected-seats");
 
+        if (arr.length === 4) {
+            alert("You can't select more seats");
+        }
         if (parseInt(totalSelectedSeats.innerText) < 4 && !arr.includes(seat)) {
             const totalPrice = document.getElementById("total-price");
             const seatsLeft = document.getElementById("seats-left");
@@ -51,6 +54,10 @@ for (const seat of seats) {
             arr.push(seat)
 
         }
+        if(arr.length >= 4){
+            document.getElementById("coupon-button").removeAttribute("disabled") 
+        }
+        submitForTicket()
     })
 }
 
@@ -73,29 +80,43 @@ function grandTotalForCoupon() {
     } else {
         alert("please Type a valid coupon");
     }
+    const discountDiv = document.createElement("p");
+    const discountTittle = document.createElement("p");
+    discountTittle.innerText = "Discount";
+    discountDiv.innerText = totalPrice.innerText - grandTotalText.innerText;
+    document.getElementById("discount-amount").appendChild(discountTittle);
+    document.getElementById("discount-amount").appendChild(discountDiv);
+
 }
 document.getElementById("coupon-button").addEventListener("click", grandTotalForCoupon);
 
 // newsletter functionalities
 function submitForTicket() {
     const phoneNumber = document.getElementById("phone-number");
-    if (phoneNumber.value >= 0) {
+    if (phoneNumber.value && arr.length > 0) {
         document.getElementById("submit-button").removeAttribute("disabled")
     }
 }
 document.getElementById("phone-number").addEventListener("change", function () {
-    submitForTicket()
+    submitForTicket();
 })
 
+function hideElement(elementId) {
+    document.getElementById(elementId).classList.add("hidden");
+}
+function showElement(elementId) {
+    document.getElementById(elementId).classList.remove("hidden");
+}
+
 document.getElementById("submit-button").addEventListener("click", function () {
-    document.getElementById("header").classList.add("hidden");
-    document.getElementById("main").classList.add("hidden");
-    document.getElementById("footer").classList.add("hidden");
-    document.getElementById("popup-div").classList.remove("hidden");
+    hideElement("header");
+    hideElement("main");
+    hideElement("footer");
+    showElement("popup-div");
 })
-document.getElementById("popup-button").addEventListener("click", function(){
-    document.getElementById("header").classList.remove("hidden");
-    document.getElementById("main").classList.remove("hidden");
-    document.getElementById("footer").classList.remove("hidden");
-    document.getElementById("popup-div").classList.add("hidden");
+document.getElementById("popup-button").addEventListener("click", function () {
+    showElement("header");
+    showElement("main");
+    showElement("footer");
+    hideElement("popup-div");
 })
