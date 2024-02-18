@@ -30,7 +30,7 @@
 
 <body class="max-w-screen-2xl mx-auto inter-font">
 
-    <header class="max-w-screen-xl mx-auto">
+    <header id="header" class="max-w-screen-xl mx-auto">
         <!-- navbar -->
         <nav class="flex flex-col lg:flex-row gap-4 justify-between items-center my-8">
             <div>
@@ -101,7 +101,7 @@
         </div>
     </header>
 
-    <main>
+    <main id="main">
         <!-- best offer section -->
         <section class="max-w-screen-xl mx-auto mt-24 mb-16">
             <h1 class="text-4xl text-center font-bold">Best offers for you</h1>
@@ -335,7 +335,8 @@
                             seat</h2>
                         <div class="bg-[#F7F8F8] mt-4 p-4 rounded-lg">
                             <div class="flex justify-between border-dashed border-b border-gray-300 pb-2">
-                                <p class="font-bold">Seat <span id="total-selected-seats" class="text-white bg-[#1DD100] px-2 rounded">0</span>
+                                <p class="font-bold">Seat <span id="total-selected-seats"
+                                        class="text-white bg-[#1DD100] px-2 rounded">0</span>
                                 </p>
                                 <p>Class</p>
                                 <p>Price</p>
@@ -350,10 +351,11 @@
                                 </div>
 
                                 <!-- coupon field -->
-                                <div class="bg-white rounded-lg p-2 flex justify-between my-4">
+                                <div id="coupon-filed" class="bg-white rounded-lg p-2 flex justify-between my-4">
                                     <input id="coupon-value" class="w-full px-4" type="text" name="" id=""
                                         placeholder="Have any copupon?">
-                                    <button id="coupon-button" class="text-white bg-[#1DD100] px-4 py-1 rounded">Apply</button>
+                                    <button id="coupon-button"
+                                        class="text-white bg-[#1DD100] px-4 py-1 rounded">Apply</button>
                                 </div>
                                 <div class="font-bold flex justify-between">
                                     <p>Grand Total</p>
@@ -362,21 +364,21 @@
                             </div>
                         </div>
 
-                        <form action="" class="space-y-4">
+                        <div class="space-y-4">
                             <label class="form-control w-full">
                                 <div class="label">
                                     <span class="label-text font-bold">Passenger Name*</span>
                                 </div>
-                                <input type="text" placeholder="Enter your name"
-                                    class="input input-bordered w-full" />
+                                <input type="text" placeholder="Enter your name" class="input input-bordered w-full"
+                                    required />
 
                             </label>
                             <label class="form-control w-full">
                                 <div class="label">
                                     <span class="label-text font-bold">Phone Number*</span>
                                 </div>
-                                <input type="number" placeholder="Enter your phone number"
-                                    class="input input-bordered w-full" />
+                                <input id="phone-number" type="number" placeholder="Enter your phone number"
+                                    class="input input-bordered w-full" required />
 
                             </label>
                             <label class="form-control">
@@ -384,11 +386,12 @@
                                     <span class="label-text font-bold">Email Id*</span>
                                 </div>
                                 <input type="email" placeholder="Enter your email id"
-                                    class="input input-bordered w-full" />
+                                    class="input input-bordered w-full" required />
 
                             </label>
-                            <input class="btn w-full text-white bg-[#1DD100]" type="submit" value="Next">
-                        </form>
+                            <input id="submit-button" class="btn w-full text-white bg-[#1DD100]" type="submit"
+                                value="Next" disabled>
+                        </div>
                         <div class="flex justify-around my-4">
                             <div>
                                 <p>Terms and Conditions</p>
@@ -407,7 +410,27 @@
         </section>
     </main>
 
-    <footer class="bg-[#030712] p-4 lg:p-16 text-white">
+    <!-- popup div -->
+    <div id="popup-div" class="h-screen w-full hidden">
+        <div class="flex justify-center h-full items-center">
+            <div class="card w-1/2 bg-base-100 shadow-xl bg-white">
+                <figure class="px-10 pt-10">
+                    <img src="./images/success.png" alt="Shoes" class="rounded-xl" />
+                </figure>
+                <div class="card-body items-center text-center">
+                    <h2 class="card-title mb-10 text-green-600">SUCCESS</h2>
+                    <p class="font-bold">Thank you for Booking Our Bus Seats. <br>
+                        We are working hard to find the best service and deals for you.</p>
+                    <p>Shortly you will find a confirmation in your email.</p>
+                    <div class="card-actions">
+                        <button id="popup-button" class="btn bg-green-600 text-white rounded-full px-16">Continue</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="footer" class="bg-[#030712] p-4 lg:p-16 text-white">
         <div class="flex justify-between items-center border-dashed border-b border-white pb-8">
             <div class="space-y-4">
                 <h2 class="text-2xl font-semibold">RA-Ticket</h2>

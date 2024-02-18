@@ -29,7 +29,7 @@ function grandTotal() {
     const grandTotalText = document.getElementById("grand-total");
     const totalPrice = document.getElementById("total-price");
     grandTotalText.innerText = parseInt(totalPrice.innerText);
-   
+
 }
 
 // function that execude on click over seat
@@ -57,23 +57,45 @@ for (const seat of seats) {
 
 // coupon functionalities
 
-function grandTotalForCoupon(){
+function grandTotalForCoupon() {
     const grandTotalText = document.getElementById("grand-total");
     const totalPrice = document.getElementById("total-price");
     grandTotalText.innerText = parseInt(totalPrice.innerText);
     const couponValue = document.getElementById("coupon-value");
     if (couponValue.value === "NEW15") {
-        const int = grandTotalText.innerText = parseInt(totalPrice.innerText) * .85;
-        console.log(int)
-    } else if(couponValue.value === "Couple 20"){
-        const int = grandTotalText.innerText = parseInt(totalPrice.innerText) * .80;
-        console.log(int)
-    }else{
+        grandTotalText.innerText = parseInt(totalPrice.innerText) * .85;
+        document.getElementById("coupon-filed").classList.add("hidden");
+
+    } else if (couponValue.value === "Couple 20") {
+        grandTotalText.innerText = parseInt(totalPrice.innerText) * .80;
+        document.getElementById("coupon-filed").classList.add("hidden");
+
+    } else {
         alert("please Type a valid coupon");
     }
 }
-
 document.getElementById("coupon-button").addEventListener("click", grandTotalForCoupon);
 
 // newsletter functionalities
+function submitForTicket() {
+    const phoneNumber = document.getElementById("phone-number");
+    if (phoneNumber.value >= 0) {
+        document.getElementById("submit-button").removeAttribute("disabled")
+    }
+}
+document.getElementById("phone-number").addEventListener("change", function () {
+    submitForTicket()
+})
 
+document.getElementById("submit-button").addEventListener("click", function () {
+    document.getElementById("header").classList.add("hidden");
+    document.getElementById("main").classList.add("hidden");
+    document.getElementById("footer").classList.add("hidden");
+    document.getElementById("popup-div").classList.remove("hidden");
+})
+document.getElementById("popup-button").addEventListener("click", function(){
+    document.getElementById("header").classList.remove("hidden");
+    document.getElementById("main").classList.remove("hidden");
+    document.getElementById("footer").classList.remove("hidden");
+    document.getElementById("popup-div").classList.add("hidden");
+})
