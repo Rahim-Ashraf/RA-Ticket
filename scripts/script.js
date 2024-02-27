@@ -120,8 +120,9 @@ document.getElementById("submit-button").addEventListener("click", function () {
     showElement("popup-div");
 })
 document.getElementById("popup-button").addEventListener("click", function () {
-    showElement("header");
-    showElement("main");
-    showElement("footer");
-    hideElement("popup-div");
+    // showElement("header");
+    // showElement("main");
+    // showElement("footer");
+    // hideElement("popup-div");
+    window.location.reload();
 })
